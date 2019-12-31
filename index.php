@@ -214,5 +214,7 @@ var search
 	
 </html>
 
-<?php require_once("footer.php") ?>
+<?php
+mysqli_close($conn);
+require_once("footer.php") ?>
 
