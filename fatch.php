@@ -135,6 +135,7 @@ $this_page_first_result = ($page-1)*$results_per_page;
 
 
 	 $output.='</div><br><br>';
+	mysqli_close($conn);
 	echo $output;
 
 ?>
