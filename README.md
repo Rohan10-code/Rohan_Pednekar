@@ -1,4 +1,4 @@
-for live demo visit  https://www.samplemoviesrohan.000webhostapp.com 
+for live demo visit https://samplemoviesrohan.000webhostapp.com/
 
 
 to work on localhost 
