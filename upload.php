@@ -42,8 +42,8 @@ if(isset($_POST['submit']))
 	
 	if(empty($title)|| empty($launch) || empty($production_company) || empty($movie_description) || empty($move_length)|| $lang_count == 0  || $director_count == 0 || $actor_count == 0  )
 	{
-		echo '<script type="text/javascript" >alert("data filed is empty");</script>';
-		//header("Location: index.php? data filed is empty ");
+		
+		header("Location: uoload_page.php? data filed is empty ");
 		exit();
 	}
 	
@@ -56,8 +56,6 @@ if(isset($_POST['submit']))
 			
 			if($cover_pic_error==0 && $video_error==0)
 			{
-				//if($cover_pic_size < 50000 && $video_size<5000000)
-				//{
 					
 					$cover_pic_new_name=uniqid('',true).".".$cover_pic_actual_extension;
 					$video_new_name=uniqid('',true).".".$video_actual_extension;
@@ -265,20 +263,18 @@ if(isset($_POST['submit']))
 						
 					move_uploaded_file($cover_pic_name_temp,$cover_destination);
 					move_uploaded_file($video_name_temp,$video_destination);
-						
+					mysqli_close($conn);	
 					header("Location: upload_page.php?upload_was_successfull");	
 					}
 					
-				//}
-				//else{
-					//echo '<script type="text/javascript" >alert("cover image is too large to store ");</script>';
-				//}
 				
 			}
 			else{
+				mysqli_close($conn);
 				header("Location: upload_page.php?error in uploading cover image");	
 			}
 		}else{
+			mysqli_close($conn);
 			header("Location: upload_page.php?you cannot upload cover image");
 			
 		}
@@ -287,7 +283,7 @@ if(isset($_POST['submit']))
 	}
 }
 else{
-	
+	mysqli_close($conn);
 	header("Location: upload_page.php?database conection fails ");
 	exit();
 }
